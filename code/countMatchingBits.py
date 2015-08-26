@@ -3,7 +3,7 @@
 # than the number of compared bits is equal to a length of the shortest byte
 
 
-def count_matching_bits(*data):
+def do(*data):
     maxlen = len(bin(max(data))[2:])
     data = [bin(e)[2:] for e in data]
     for i in range(len(data)):
