@@ -1,12 +1,15 @@
 from mpl_toolkits.mplot3d import Axes3D
-import random
 import matplotlib.pyplot as plt
 import matplotlib.cm as cmx
 import matplotlib.colors
 
+# function visualizeIt calls prepare_plot() and then just draw plot
+
 def visualizeIt(data):
     prepare_plot(data)
     plt.show()
+
+# createPNG() calls prepare_plot() and then iteratively rotates an image capturing every frame into .png file
 
 def createPNGs(data):
     ax = prepare_plot(data)
@@ -22,16 +25,16 @@ def createPNGs(data):
         print(n)
     plt.close()
 
+# prepare_plot() receives numpy array 'data' and creates a 3d scatter coloured plot according to that data.
+# this function does not actually draw the plot but simply adjust plot's settings, creates corresponding colormap
+# and return a subplot object 'ax'
+
 def prepare_plot(data):
+    # rearranging data into 4 arrays (just for clarity)
     dataX = list(data[:, 0])
     dataY = list(data[:, 1])
     dataZ = list(data[:, 2])
     dataC = list(data[:, 3])
-
-    # dataX = random.sample(dataX, 1000)
-    # dataY = random.sample(dataY, 1000)
-    # dataZ = random.sample(dataZ, 1000)
-    # dataC = random.sample(dataC, 1000)
 
     # creating colormap according to present data
     cm = plt.get_cmap('brg')
@@ -47,11 +50,7 @@ def prepare_plot(data):
     ax.w_yaxis.set_pane_color((0, 0, 0))
     ax.w_zaxis.set_pane_color((0, 0, 0))
     ax.grid(False)
-    # ax.set_xlim([-50, 300])
-    # ax.set_ylim([-50, 300])
-    # ax.set_zlim([-50, 300])
     ax.scatter(dataX, dataY, dataZ, c=scalarMap.to_rgba(dataC), edgecolors=scalarMap.to_rgba(dataC), marker='.', s=5)
-    # ax.scatter(dataX, dataY, dataZ, c='r', edgecolors='r', marker='.', s=5)
     scalarMap.set_array(dataC)
     plt.subplots_adjust(left=0.0, right=1.0, bottom=0.0, top=1.0)
     return ax

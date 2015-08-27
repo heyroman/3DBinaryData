@@ -3,6 +3,11 @@ from struct import unpack
 import countMatchingBits
 import numpy as np
 
+# Function represent_simple takes file and file's size
+# and reads the file bytewise.
+# Then it packs this data into numpy array, where:
+# first 3 columns are numeric represented bytes from file
+# last column contains numbers of matching bits in bytes from first 3 columns of the same row
 
 def represent_simple(file, filesize):
     n_dims = 3
@@ -16,6 +21,10 @@ def represent_simple(file, filesize):
         data[i, :] = [byteX, byteY, byteZ, byteC]
     return data
 
+# represent_PCA takes file and it's size and divides the file by 1000 (1000 is a number of desirable data points)
+# to get the number of coordinates for each point.
+# These numeric bytes are then being packed into a numpy matrix with n_dots rows and n_dims columns
+# After that PCA is applied to the array reducing the number of columns to 4
 
 def represent_PCA(file, filesize):
     n_dims = filesize // 1000
