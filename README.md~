@@ -10,5 +10,3 @@ The color of this point is then being set according to the number of matching bi
 If file size is greater than 4kB, the PCA gets into action. We assume we only want 1000 points to plot, so we divide out file into 1000 pieces.
 Each piece then containes file_size/1000 bytes, ie dimensions of a point represented by this piece. So, we have a matrix of 1000 rows and file_size/1000 columns (dimensions).
 Then PCA is applied to that matrix reducing dimensionality to the number of 4. These 4 dimensions are x, y, z and color of each point.
-
-P.S. Examples of pictures obtained by this method are stored in images/images_for_gif folder in a form of gif-animations and can be viewed right here on GitHub. Feel free to check them out!
