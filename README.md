@@ -11,4 +11,4 @@ If file size is greater than 4kB, the PCA gets into action. We assume we only wa
 Each piece then containes file_size/1000 bytes, ie dimensions of a point represented by this piece. So, we have a matrix of 1000 rows and file_size/1000 columns (dimensions).
 Then PCA is applied to that matrix reducing dimensionality to the number of 4. These 4 dimensions are x, y, z and color of each point.
 
-P.S. Examples of pictures obtained by this method are stored in images/images_for_gif folder in a form of gif-animations that can be viewed right here on GitHub. Feel free to check them out!
+P.S. Examples of pictures obtained by this method are stored in [images/images_for_gif](https://github.com/cogtepsum/3DBinaryData/tree/master/images/images_for_gif) folder in a form of gif-animations that can be viewed right here on GitHub. Feel free to check them out!
